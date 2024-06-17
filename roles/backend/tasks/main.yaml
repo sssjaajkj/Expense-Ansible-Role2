@@ -6,11 +6,11 @@
 
 - name: install nodejs
   ansible.builtin.dnf: 
-    name: "{{ item }}"
-    state: installed
-    loop:
-    - nodejs
-    - mysql  
+  name: "{{ item }}"
+  state: installed
+loop:
+- nodejs
+- mysql  
 
 - name: create expense user
   ansible.builtin.user:
@@ -44,10 +44,10 @@
 
 - name: install python mysql dependencies
   ansible.builtin.pip:
-  name:
-  - PyMySQL # to connect MYSQL DB from Ansible
-  - cryptography
-  executable: pip3.9 # pip3.11 python cersionis 3.11
+name:
+- PyMySQL # to connect MYSQL DB from Ansible
+- cryptography
+executable: pip3.9 # pip3.11 python cersionis 3.11
 
 - name: import data into mysql
   community.mysql.mysql_db:
