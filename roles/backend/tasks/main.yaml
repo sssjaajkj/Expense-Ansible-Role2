@@ -51,12 +51,12 @@
 
 - name: import data into mysql
   community.mysql.mysql_db:
-  login_user: {{ login_user }}
-  login_password: "{{ login_password }}"
-  login_host: "{{ login_host }}"
-  target: /app/schema/backend.sql
-  state: import
-  name: all
+    login_user: {{ login_user }}
+    login_password: "{{ login_password }}"
+    login_host: "{{ login_host }}"
+    target: /app/schema/backend.sql
+    state: import
+    name: all
 
 - name: daemon reload
   ansible.builtin.systemd_service:
