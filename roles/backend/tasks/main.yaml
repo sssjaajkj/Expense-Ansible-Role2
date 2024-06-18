@@ -18,6 +18,8 @@
       name: expense
 
   - name: run app pre -main
+    tags:
+    - deployment
     ansible.builtin.import_role:
       name: common
       tasks_from: app-pre-main
@@ -40,6 +42,8 @@
   #     remote_src: yes
 
   - name: install npm dependencies
+    tags:
+    - deployment
     ansible.builtin.command: npm install
     args:
       chdir: /app
@@ -70,7 +74,9 @@
       daemon_reload: true
 
   - name: start and enable backend service
+     tags:
+    - deployment
     ansible.builtin.service:
       name: backend
-      state: started
+      state: restarted
       enabled: yes
